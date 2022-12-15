@@ -38,5 +38,5 @@ class SerializableMeasures(SerializableStruct, table_name=None):
         """
         assert key in [
             col.name for col in self._columns
-        ], "measure {key} does not exist"
+        ], f"measure {key} does not exist"
         setattr(self, key, value)

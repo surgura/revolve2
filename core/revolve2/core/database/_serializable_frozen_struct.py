@@ -133,7 +133,7 @@ class SerializableFrozenStruct(Serializable):
             return Integer
         elif ctype == float:
             return Float
-        elif ctype == String:
+        elif ctype == str:
             return String
         else:
             assert False, "Unsupported type."

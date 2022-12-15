@@ -138,10 +138,10 @@ class SerializableStruct(Serializable):
             return Integer
         elif ctype == float:
             return Float
-        elif ctype == String:
+        elif ctype == str:
             return String
         else:
-            assert False, "Unsupported type."
+            assert False, f"Unsupported type: {ctype}"
 
     @classmethod
     async def prepare_db(cls: Type[Self], conn: AsyncConnection) -> None:
