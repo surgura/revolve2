@@ -51,6 +51,9 @@ class SerializableFrozenStruct(Serializable):
     __db_base: Any  # TODO type
     __db_id: Optional[int] = None
 
+    def clear_id(self) -> None:
+        self.__db_id = None
+
     @classmethod
     def __init_subclass__(
         cls: Type[Self], /, table_name: Optional[str], **kwargs: Dict[str, Any]
