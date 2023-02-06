@@ -165,6 +165,9 @@ class SerializableFrozenStruct(Serializable):
         :returns: Ids of the objects in the database.
         """
         new_objects = [o for o in objects if o.__db_id is None]
+        import logging
+
+        logging.info(len(new_objects))
 
         args: Dict[str, Union[List[int], List[float], List[str]]] = {}
 
