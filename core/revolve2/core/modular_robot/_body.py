@@ -186,7 +186,6 @@ class _GridMaker:
         z: int
         module: Module
 
-    _core_pos: Tuple[int, int, int]
     _cells: List[_Cell]
 
     def __init__(self) -> None:
@@ -274,7 +273,9 @@ class _GridMaker:
             if child is not None:
                 assert np.isclose(child.rotation % (math.pi / 2.0), 0.0)
 
-                rotation = Quaternion.from_eulers([child.rotation, 0.0, 0.0])
+                rotation = orientation * Quaternion.from_eulers(
+                    [child.rotation, 0.0, 0.0]
+                )
 
                 self._make_grid_recur(
                     child, position + rotation * Vector3([1.0, 0.0, 0.0]), rotation
