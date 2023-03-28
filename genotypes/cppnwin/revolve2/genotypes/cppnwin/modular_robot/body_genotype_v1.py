@@ -35,7 +35,7 @@ def random_v1(
         multineat_params,
         output_activation_func,
         5,  # bias(always 1), pos_x, pos_y, pos_z, chain_length
-        5,  # empty, brick, activehinge, rot0, rot90
+        3,  # 5,  # empty, brick, activehinge, rot0, rot90
         num_initial_mutations,
     )
 
@@ -130,8 +130,8 @@ def __evaluate_cppn(
     module_type = types[type_probs.index(min(type_probs))]
 
     # get rotation from output probabilities
-    rotation_probs = [outputs[3], outputs[4]]
-    rotation = rotation_probs.index(min(rotation_probs))
+    # rotation_probs = [outputs[3], outputs[4]]
+    rotation = 0  # rotation_probs.index(min(rotation_probs))
 
     return (module_type, rotation)
 
