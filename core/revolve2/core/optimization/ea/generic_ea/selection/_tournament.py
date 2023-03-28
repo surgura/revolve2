@@ -2,13 +2,14 @@ from __future__ import annotations
 
 from random import Random
 from typing import List, TypeVar
+import numpy as np
 
 from ._supports_lt import SupportsLt
 
 Fitness = TypeVar("Fitness", bound="SupportsLt")
 
 
-def tournament(rng: Random, fitnesses: List[Fitness], k: int) -> int:
+def tournament(rng: np.random.Generator, fitnesses: List[Fitness], k: int) -> int:
     """
     Perform tournament selection and return the index of the best individual.
 
@@ -19,5 +20,5 @@ def tournament(rng: Random, fitnesses: List[Fitness], k: int) -> int:
     """
     assert len(fitnesses) >= k
 
-    participant_indices = rng.choices(population=range(len(fitnesses)), k=k)
+    participant_indices = rng.integers(0, len(fitnesses), size=k)
     return max(participant_indices, key=lambda i: fitnesses[i])
