@@ -25,7 +25,7 @@ setup(
         "matplotlib>=3.4.3",
         "scipy>=1.7.1",
         "pyrr>=0.10.3",
-        "sqlalchemy>=1.4.28",
+        "sqlalchemy>=2.0.0",
         "asyncssh>=2.9.0",
         "aiosqlite>=0.17.0",
         "pandas>=1.4.2",
