@@ -11,7 +11,7 @@ from revolve2.actor_controllers.cpg import CpgNetworkStructure
 from revolve2.core.modular_robot import Body
 from revolve2.core.modular_robot.brains import (
     BrainCpgNetworkStatic,
-    make_cpg_network_structure_neighbour,
+    make_cpg_network_structure_neighbor,
 )
 from revolve2.core.optimization import DbId
 from revolve2.core.optimization.ea.openai_es import OpenaiESOptimizer
@@ -171,9 +171,7 @@ class Optimizer(OpenaiESOptimizer):
         }
         active_hinges = [active_hinge_map[id] for id in self._dof_ids]
 
-        self._cpg_network_structure = make_cpg_network_structure_neighbour(
-            active_hinges
-        )
+        self._cpg_network_structure = make_cpg_network_structure_neighbor(active_hinges)
 
     def _init_runner(self) -> None:
         self._runner = LocalRunner(headless=True)

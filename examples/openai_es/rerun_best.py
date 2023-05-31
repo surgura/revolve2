@@ -7,7 +7,7 @@ from revolve2.core.database.serializers import Ndarray1xnSerializer
 from revolve2.core.modular_robot import ModularRobot
 from revolve2.core.modular_robot.brains import (
     BrainCpgNetworkStatic,
-    make_cpg_network_structure_neighbour,
+    make_cpg_network_structure_neighbor,
 )
 from revolve2.core.optimization.ea.openai_es import DbOpenaiESOptimizerIndividual
 from revolve2.runners.mujoco import ModularRobotRerunner
@@ -54,7 +54,7 @@ async def main() -> None:
         }
         active_hinges = [active_hinge_map[id] for id in dof_ids]
 
-        cpg_network_structure = make_cpg_network_structure_neighbour(active_hinges)
+        cpg_network_structure = make_cpg_network_structure_neighbor(active_hinges)
 
         initial_state = cpg_network_structure.make_uniform_state(0.5 * math.pi / 2.0)
         weight_matrix = (
