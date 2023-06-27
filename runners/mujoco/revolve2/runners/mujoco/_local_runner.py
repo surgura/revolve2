@@ -342,6 +342,8 @@ class LocalRunner(Runner):
                         botfile.close()
                         os.remove(botfile.name)
 
+            LocalRunner._set_parameters(robot)
+
             for joint in posed_actor.actor.joints:
                 robot.actuator.add(
                     "position",
@@ -425,3 +427,22 @@ class LocalRunner(Runner):
         for i, target in enumerate(targets):
             data.ctrl[2 * i] = target
             data.ctrl[2 * i + 1] = 0
+
+    @staticmethod
+    def _set_recursive_parameters(element):
+        if element.tag == "body":
+            for sub_element in element.body._elements:
+                LocalRunner._set_recursive_parameters(sub_element)
+
+        if element.tag == "geom":
+            if math.isclose(element.size[0], 0.044, abs_tol=0.001):
+                element.rgba = [1.0, 0.25, 0.25, 1.0]
+            elif math.isclose(element.size[0], 0.031, abs_tol=0.001):
+                element.rgba = [0.3, 0.3, 1.0, 1.0]
+            else:
+                element.rgba = [0.8, 0.8, 0.8, 1.0]
+
+    @staticmethod
+    def _set_parameters(robot):
+        for element in robot.worldbody.body._elements:
+            LocalRunner._set_recursive_parameters(element)
