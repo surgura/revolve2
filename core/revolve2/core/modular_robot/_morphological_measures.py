@@ -115,9 +115,9 @@ class MorphologicalMeasures:
         self.double_neighbour_active_hinges = (
             self.__calculate_double_neighbour_active_hinges()
         )
-        self.xy_symmetry = self.__calculate_xy_symmetry()
-        self.xz_symmetry = self.__calculate_xz_symmetry()
-        self.yz_symmetry = self.__calculate_yz_symmetry()
+        # self.xy_symmetry = self.__calculate_xy_symmetry()
+        # self.xz_symmetry = self.__calculate_xz_symmetry()
+        # self.yz_symmetry = self.__calculate_yz_symmetry()
 
     @classmethod
     def __calculate_is_2d(cls, body: Body) -> bool:
